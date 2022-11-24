@@ -1,3 +1,4 @@
+import 'package:editais_app/modelview/auth/email_pass_auth_register.dart';
 import 'package:editais_app/view/styles/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +10,15 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+
+  TextEditingController _controladorEmail = TextEditingController();
+  TextEditingController _controladorSenha = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registrar Conta'),
+        title: const Text('Registrar Conta'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -44,37 +49,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 width: 350,
                 height: 30,
-                child: Text('Preencha as informações a seguir: ')),
+                child: const Text('Por favor preencha as informações a seguir: ')),
             Padding(
               padding: const EdgeInsets.fromLTRB(32, 0, 32, 5),
               child: TextFormField(
-                controller: null,
-                keyboardType: TextInputType.text,
-                cursorColor: ColorsStyle().formsGerais,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 3, color: ColorsStyle().formsGerais)),
-                  hintText: 'Nome Completo',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(32, 0, 32, 5),
-              child: TextFormField(
-                controller: null,
-                keyboardType: TextInputType.number,
-                cursorColor: ColorsStyle().formsGerais,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(width: 3, color: ColorsStyle().formsGerais)),
-                  hintText: 'Matrícula',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(32, 0, 32, 5),
-              child: TextFormField(
-                controller: null,
+                controller: _controladorEmail,
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: ColorsStyle().formsGerais,
                 decoration: InputDecoration(
@@ -87,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Padding(
               padding: const EdgeInsets.fromLTRB(32, 0, 32, 10),
               child: TextFormField(
-                controller: null,
+                controller: _controladorSenha,
                 keyboardType: TextInputType.visiblePassword,
                 cursorColor: ColorsStyle().formsGerais,
                 decoration: InputDecoration(
@@ -102,9 +81,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 45,
               child: ElevatedButton.icon(
                   style: TextButton.styleFrom(backgroundColor: ColorsStyle().botao),
-                  onPressed: () {},
-                  icon: Icon(Icons.app_registration),
-                  label: Text("Registrar")),
+                  onPressed: () async {
+                    await Future.delayed(const Duration(seconds: 2), (){
+                    registerUser(_controladorEmail.text, _controladorSenha.text);
+                    });
+                  },
+                  icon: const Icon(Icons.app_registration),
+                  label: const Text("Registrar")),
             ),
           ],
         ),
