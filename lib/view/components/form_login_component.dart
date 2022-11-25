@@ -5,12 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:styled_text/styled_text.dart';
 
+import '../../modelview/auth/email_pass_auth_login.dart';
+import '../../modelview/auth/facebook_auth.dart';
 import '../register_screen.dart';
-class FormLoginComponent extends StatelessWidget {
+class FormLoginComponent extends StatefulWidget {
   const FormLoginComponent({Key? key}) : super(key: key);
 
   @override
+  State<FormLoginComponent> createState() => _FormLoginComponentState();
+}
+
+class _FormLoginComponentState extends State<FormLoginComponent> {
+
+  TextEditingController login = TextEditingController();
+  TextEditingController senha = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -24,7 +36,7 @@ class FormLoginComponent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(32, 0, 32, 5),
           child: TextFormField(
-            controller: null,
+            controller: login,
             keyboardType: TextInputType.emailAddress,
             cursorColor: ColorsStyle().formsGerais,
             decoration: InputDecoration(
@@ -38,7 +50,7 @@ class FormLoginComponent extends StatelessWidget {
           child: TextFormField(
             obscureText: true,
             keyboardType: TextInputType.visiblePassword,
-            controller: null,
+            controller: senha,
             cursorColor: ColorsStyle().formsGerais,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -64,7 +76,9 @@ class FormLoginComponent extends StatelessWidget {
           height: 50,
           child: ElevatedButton.icon(
               style: TextButton.styleFrom(backgroundColor: ColorsStyle().botao),
-              onPressed: (){},
+              onPressed: (){
+                logarUsuarioEmailSenha(login.text, senha.text);
+              },
               icon: Icon(Icons.login),
               label: Text("Logar")),
         ),
@@ -106,7 +120,7 @@ class FormLoginComponent extends StatelessWidget {
           height: 40,
           child: ElevatedButton.icon(
               style: TextButton.styleFrom(backgroundColor: ColorsStyle().botaoFacebook),
-              onPressed: (){},
+              onPressed: logarFacebook,
               icon: Icon(Icons.facebook),
               label: Text("Autenticar pelo Facebook")),
         ),

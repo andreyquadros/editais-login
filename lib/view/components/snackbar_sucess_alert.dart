@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Future<void> snackbar_error_alert(String titulo_erro, String mensagem_erro) async {
+Future<void> snackbar_sucess_alert(String titulo_erro, String mensagem_erro) async {
   Get.snackbar(
     "Erro",
     "Campos!",
@@ -24,7 +24,7 @@ Future<void> snackbar_error_alert(String titulo_erro, String mensagem_erro) asyn
     margin: const EdgeInsets.all(30),
     animationDuration: const Duration(milliseconds: 3000),
     backgroundGradient: const LinearGradient(
-      colors: [Colors.red, Colors.red],
+      colors: [Colors.green, Colors.green],
     ),
     borderColor: Colors.white70,
     borderWidth: 3,

@@ -6,9 +6,6 @@ import 'package:get/get.dart';
 import '../../view/home.dart';
 
 void logarFacebook() async {
-  // setState((){
-  //   loading = true;
-  // });
 
   try{
     final facebookLoginResult = await FacebookAuth.instance.login();
