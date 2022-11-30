@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:editais_app/modelview/auth/email_pass_auth_register.dart';
 import 'package:editais_app/view/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -13,6 +16,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   TextEditingController _controladorEmail = TextEditingController();
   TextEditingController _controladorSenha = TextEditingController();
+
+  Timer? _timer;
 
   @override
   Widget build(BuildContext context) {
@@ -82,9 +87,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: ElevatedButton.icon(
                   style: TextButton.styleFrom(backgroundColor: ColorsStyle().botao),
                   onPressed: () async {
-                    await Future.delayed(const Duration(seconds: 2), (){
-                    registerUser(_controladorEmail.text, _controladorSenha.text);
+                    await Future.delayed(const Duration(seconds: 2), () async{
+                      _timer?.cancel();
+                      await EasyLoading.show(
+                        status: 'Carregando...',
+                        maskType: EasyLoadingMaskType.black,
+                      );
+                      await registerUser(_controladorEmail.text, _controladorSenha.text);
+                      EasyLoading.dismiss();
+                      _controladorSenha.clear();
+                      _controladorEmail.clear();
                     });
+
                   },
                   icon: const Icon(Icons.app_registration),
                   label: const Text("Registrar")),

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:editais_app/view/components/snackbar_sucess_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:editais_app/view/styles/colors.dart';
@@ -6,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 Future<void> registerUser(String controladorEmail, String controladorSenha) async {
+
   print(controladorEmail);
   try {
     if (controladorEmail != null && controladorSenha != null) {
@@ -18,10 +20,7 @@ Future<void> registerUser(String controladorEmail, String controladorSenha) asyn
           'email': controladorEmail,
           'senha': controladorSenha,
         });
-        Get.snackbar(backgroundColor: Color(0xFF0000),
-            barBlur: 30.0,
-            'Sucesso Cadastro',
-            'Criação do cadastro no Firebase').show();
+        snackbar_sucess_alert('Sucesso!', 'Criação de usuário realizada com sucesso no Firebase!');
       } else {
         Get.snackbar(
             'Erro no Cadastro', 'Falha na criação do cadastro no Firebase')

@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:editais_app/view/forgot_screen.dart';
 import 'package:editais_app/view/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:styled_text/styled_text.dart';
 
@@ -19,6 +22,8 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
 
   TextEditingController login = TextEditingController();
   TextEditingController senha = TextEditingController();
+
+  Timer? _timer;
 
   @override
   Widget build(BuildContext context) {

@@ -22,7 +22,7 @@ Future<void> snackbar_error_alert(String titulo_erro, String mensagem_erro) asyn
     overlayBlur: 20,
     overlayColor: Colors.white70,
     margin: const EdgeInsets.all(30),
-    animationDuration: const Duration(milliseconds: 3000),
+    animationDuration: const Duration(milliseconds: 2000),
     backgroundGradient: const LinearGradient(
       colors: [Colors.red, Colors.red],
     ),
@@ -30,7 +30,7 @@ Future<void> snackbar_error_alert(String titulo_erro, String mensagem_erro) asyn
     borderWidth: 3,
     dismissDirection: DismissDirection.horizontal,
     forwardAnimationCurve: Curves.easeOutBack,
-    duration: const Duration(milliseconds: 8000),
+    duration: const Duration(milliseconds: 2000),
     icon: const Icon(
       Icons.crisis_alert,
       color: Colors.white,
