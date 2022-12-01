@@ -10,6 +10,7 @@ import 'package:styled_text/styled_text.dart';
 
 import '../../modelview/auth/email_pass_auth_login.dart';
 import '../../modelview/auth/facebook_auth.dart';
+import '../../modelview/store_posts/retrieving_posts.dart';
 import '../register_screen.dart';
 class FormLoginComponent extends StatefulWidget {
   const FormLoginComponent({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
   TextEditingController senha = TextEditingController();
 
   Timer? _timer;
+  bool eyeObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +55,25 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
         Padding(
           padding: const EdgeInsets.fromLTRB(32, 5, 32, 10),
           child: TextFormField(
-            obscureText: true,
+            obscureText: eyeObscure,
             keyboardType: TextInputType.visiblePassword,
             controller: senha,
             cursorColor: ColorsStyle().formsGerais,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
+              suffixIcon: GestureDetector(child: Icon(Icons.remove_red_eye), onTap: (){
+                if(eyeObscure == true) {
+                  setState(() {
+                    eyeObscure = false;
+                  });
+                }else{
+                  setState(() {
+                    eyeObscure = true;
+                  });
+                }
+              },),
               hintText: 'Senha',
+
             ),
           ),
         ),

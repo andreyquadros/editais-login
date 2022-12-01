@@ -72,6 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               padding: const EdgeInsets.fromLTRB(32, 0, 32, 10),
               child: TextFormField(
                 controller: _controladorSenha,
+                obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
                 cursorColor: ColorsStyle().formsGerais,
                 decoration: InputDecoration(
