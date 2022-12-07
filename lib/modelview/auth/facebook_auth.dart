@@ -6,20 +6,19 @@ import 'package:get/get.dart';
 import '../../view/home_screen_new.dart';
 import '../controllers/controller_get_data.dart';
 
-final ControllerGetData controllerUserFacebook = Get.put(ControllerGetData());
+final ControllerGetData controllerUser = Get.put(ControllerGetData());
 
 void logarFacebook() async {
   try {
     final facebookLoginResult = await FacebookAuth.instance.login();
     final userData = await FacebookAuth.instance.getUserData();
     print('Valores originais ${userData}');
-    controllerUserFacebook.currentUserEmail.value = userData['email'];
-    controllerUserFacebook.currentUserName.value = userData['name'];
-    controllerUserFacebook.currentUserId.value = userData['id'];
-    controllerUserFacebook.currentUserPicture.value =
+    controllerUser.currentUserEmail.value = userData['email'];
+    controllerUser.currentUserName.value = userData['name'];
+    controllerUser.currentUserId.value = userData['id'];
+    controllerUser.currentUserPicture.value =
         userData['picture']['data']['url'];
-    print(
-        'Testando valores disponíveis ${controllerUserFacebook.currentUserPicture}');
+    print('Testando valores disponíveis ${controllerUser.currentUserPicture}');
     final facebookAuthCredential =
         FacebookAuthProvider.credential(facebookLoginResult.accessToken!.token);
     await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);

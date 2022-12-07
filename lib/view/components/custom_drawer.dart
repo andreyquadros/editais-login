@@ -1,5 +1,7 @@
+import 'package:editais_app/view/book_edital.dart';
 import 'package:editais_app/view/home_screen_new.dart';
 import 'package:editais_app/view/login_screen.dart';
+import 'package:editais_app/view/update_data_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -27,7 +29,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               shape: GFAvatarShape.circle,
               size: 300,
               backgroundImage: NetworkImage(
-                  "https://scontent.fpvh5-1.fna.fbcdn.net/v/t39.30808-6/272153085_4747891471924470_6466354893464882265_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=1epKmXnMap4AX-nT9UU&_nc_ht=scontent.fpvh5-1.fna&oh=00_AfBLacOcGvzy4CJ9X7VnBef-iG4ywxw4P2zwJVIb6Tmugw&oe=6393F1F1",
+                  "${controllerDados.currentUserPicture.value}",
                   scale: 80),
             ),
             child: Column(
@@ -63,13 +65,33 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
           ListTile(
             title: Text('Atualizar Perfil'),
-            onTap: () {},
+            onTap: () {
+              Get.to(() => UpdateDataScreen());
+            },
+          ),
+          ListTile(
+            selected: true,
+            selectedColor: Colors.teal,
+            title: Row(
+              children: [
+                Text(
+                  'Inscrever-se',
+                  style: TextStyle(fontSize: 18),
+                ),
+                Icon(Icons.app_registration_outlined),
+              ],
+            ),
+            onTap: () {
+              Get.offAll(() => BookScreen());
+              //controllerDados.refresh();
+              //Get.offAll(() => LoginScreen());
+            },
           ),
           ListTile(
             selected: true,
             selectedColor: Colors.red,
             title: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 220),
+              padding: const EdgeInsets.symmetric(vertical: 150),
               child: Row(
                 children: [
                   Icon(Icons.logout_rounded),
@@ -81,6 +103,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ),
             onTap: () {
+              controllerDados.refresh();
               Get.offAll(() => LoginScreen());
             },
           ),

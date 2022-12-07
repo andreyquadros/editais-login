@@ -1,17 +1,15 @@
 import 'dart:async';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:editais_app/view/forgot_screen.dart';
 import 'package:editais_app/view/styles/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:styled_text/styled_text.dart';
 
 import '../../modelview/auth/email_pass_auth_login.dart';
 import '../../modelview/auth/facebook_auth.dart';
-import '../../modelview/store_posts/retrieving_posts.dart';
 import '../register_screen.dart';
+
 class FormLoginComponent extends StatefulWidget {
   const FormLoginComponent({Key? key}) : super(key: key);
 
@@ -20,7 +18,6 @@ class FormLoginComponent extends StatefulWidget {
 }
 
 class _FormLoginComponentState extends State<FormLoginComponent> {
-
   TextEditingController login = TextEditingController();
   TextEditingController senha = TextEditingController();
 
@@ -29,7 +26,6 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -47,7 +43,8 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
             keyboardType: TextInputType.emailAddress,
             cursorColor: ColorsStyle().formsGerais,
             decoration: InputDecoration(
-              border: OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.green)),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(width: 3, color: Colors.green)),
               hintText: 'E-mail',
             ),
           ),
@@ -61,26 +58,28 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
             cursorColor: ColorsStyle().formsGerais,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              suffixIcon: GestureDetector(child: Icon(Icons.remove_red_eye), onTap: (){
-                if(eyeObscure == true) {
-                  setState(() {
-                    eyeObscure = false;
-                  });
-                }else{
-                  setState(() {
-                    eyeObscure = true;
-                  });
-                }
-              },),
+              suffixIcon: GestureDetector(
+                child: Icon(Icons.remove_red_eye),
+                onTap: () {
+                  if (eyeObscure == true) {
+                    setState(() {
+                      eyeObscure = false;
+                    });
+                  } else {
+                    setState(() {
+                      eyeObscure = true;
+                    });
+                  }
+                },
+              ),
               hintText: 'Senha',
-
             ),
           ),
         ),
         GestureDetector(
-          onTap: (){
-            Get.to(()=> ForgotScreen());
-            },
+          onTap: () {
+            Get.to(() => ForgotScreen());
+          },
           child: Container(
             width: 350,
             height: 25,
@@ -95,7 +94,7 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
           height: 50,
           child: ElevatedButton.icon(
               style: TextButton.styleFrom(backgroundColor: ColorsStyle().botao),
-              onPressed: (){
+              onPressed: () {
                 logarUsuarioEmailSenha(login.text, senha.text);
               },
               icon: Icon(Icons.login),
@@ -107,13 +106,14 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(35, 20, 0, 0),
             child: GestureDetector(
-              onTap: (){
-                Get.to(()=> RegisterScreen());
+              onTap: () {
+                Get.to(() => RegisterScreen());
               },
               child: StyledText(
                 text: 'Não tem conta?! <bold>Registre-se agora</bold> mesmo.',
                 tags: {
-                  'bold': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold)),
+                  'bold': StyledTextTag(
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 },
               ),
             ),
@@ -126,9 +126,11 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: StyledText(
-                text: '-----------------------------------------<bold> OU </bold>----------------------------------------',
+                text:
+                    '-----------------------------------------<bold> OU </bold>----------------------------------------',
                 tags: {
-                  'bold': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold)),
+                  'bold': StyledTextTag(
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 },
               ),
             ),
@@ -138,12 +140,12 @@ class _FormLoginComponentState extends State<FormLoginComponent> {
           width: 350,
           height: 40,
           child: ElevatedButton.icon(
-              style: TextButton.styleFrom(backgroundColor: ColorsStyle().botaoFacebook),
+              style: TextButton.styleFrom(
+                  backgroundColor: ColorsStyle().botaoFacebook),
               onPressed: logarFacebook,
               icon: Icon(Icons.facebook),
               label: Text("Autenticar pelo Facebook")),
         ),
-
       ],
     );
   }
