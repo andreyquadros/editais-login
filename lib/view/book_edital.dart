@@ -10,8 +10,6 @@ import 'package:getwidget/components/card/gf_card.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:getwidget/position/gf_position.dart';
 
-import '../modelview/auth/book_email_auth.dart';
-
 class BookScreen extends StatefulWidget {
   const BookScreen({Key? key}) : super(key: key);
 
@@ -66,10 +64,9 @@ class _BookScreenState extends State<BookScreen> {
                                         doc['body'];
                                     controllerDetails.currentPostUrl.value =
                                         doc['urlImage'];
-                                    Get.to(() => DetailsEditalScreen());
                                     controllerDetails.currentPostId.value =
                                         doc.id;
-                                    update_post_registerUser();
+                                    Get.to(() => DetailsEditalScreen());
                                   },
                                   child: GFCard(
                                     boxFit: BoxFit.cover,

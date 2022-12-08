@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../modelview/auth/book_email_auth.dart';
 import '../modelview/controllers/controller_user_details.dart';
 import 'styles/colors.dart';
 
@@ -49,7 +50,9 @@ class _DetailsEditalScreenState extends State<DetailsEditalScreen> {
               child: ElevatedButton.icon(
                   style: TextButton.styleFrom(
                       backgroundColor: ColorsStyle().primaryColor),
-                  onPressed: () {},
+                  onPressed: () {
+                    book_email_auth();
+                  },
                   icon: Icon(Icons.app_registration_rounded),
                   label: Text("Inscrever-se neste edital")),
             ),

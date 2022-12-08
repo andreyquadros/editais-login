@@ -1,12 +1,12 @@
 import 'package:editais_app/view/book_edital.dart';
 import 'package:editais_app/view/home_screen_new.dart';
 import 'package:editais_app/view/login_screen.dart';
-import 'package:editais_app/view/update_data_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
 import '../../modelview/controllers/controller_get_data.dart';
+import '../update_data_screen.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Obx(() => Text(
-                      '${controllerDados.currentUserName.value} - ${controllerDados.currentUserId}',
+                      '${controllerDados.currentUserName.value} ',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     )),
