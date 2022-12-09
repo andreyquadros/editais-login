@@ -1,6 +1,8 @@
 import 'package:editais_app/view/book_edital.dart';
+import 'package:editais_app/view/contact_screen.dart';
 import 'package:editais_app/view/home_screen_new.dart';
 import 'package:editais_app/view/login_screen.dart';
+import 'package:editais_app/view/results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -57,11 +59,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
           ListTile(
             title: Text('Resultados'),
-            onTap: () {},
+            onTap: () {
+              Get.to(() => ResultsScreen());
+            },
           ),
           ListTile(
             title: Text('Contato'),
-            onTap: () {},
+            onTap: () {
+              Get.to(() => ContactScreen());
+            },
           ),
           ListTile(
             title: Text('Atualizar Perfil'),
